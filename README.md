@@ -103,6 +103,10 @@ Este proyecto está diseñado para funcionar como un sitio web estático alojado
 - `main.js` determina el idioma usando el atributo `data-page-lang` del elemento `html`.
 - Si el dashboard no carga datos, revisa el endpoint y la configuración de CORS.
 
+
+ ## git repo
+ https://github.com/MSTVLC/frontend-v1.git
+
 ## Contacto
 
 Restaurante Estrella — support@mysite.com · +34 969 636 773
