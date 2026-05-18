@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="es" data-page-lang="es" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error - Dashboard de Ventas</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Scoped tweaks for the error card to keep design consistent */
+        .error-page-wrapper { min-height: calc(100vh - 140px); display:flex; align-items:center; justify-content:center; }
+        .error-container { max-width:720px; width:100%; padding:2.25rem; border-radius:16px; }
+        .error-code { font-family: 'Poppins', sans-serif; font-size:3rem; font-weight:800 }
+        .error-icon { font-size:3.5rem; color:#dc3545 }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100 justify-content-between">
+
+    <!-- Header (matches main pages) -->
+    <header class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm py-2">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <span class="logo-icon" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="8" y="30" width="10" height="26" rx="3" fill="#0d6efd"/>
+                        <rect x="26" y="20" width="10" height="36" rx="3" fill="#3b82f6"/>
+                        <rect x="44" y="12" width="10" height="44" rx="3" fill="#7dd3fc"/>
+                        <circle cx="32" cy="20" r="4" fill="#fff" opacity="0.9"/>
+                    </svg>
+                </span>
+                <span id="brandText">Stats</span>
+            </a>
+            <div class="d-flex align-items-center gap-2 ms-auto">
+                <a id="langToggleBtn" class="btn btn-outline-secondary" href="en.html" aria-label="Cambiar a inglés">EN</a>
+                <button id="darkModeToggle" class="dark-mode-btn" aria-label="Alternar modo oscuro">🌙</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow-1 my-4 error-page-wrapper">
+        <div class="container">
+            <div class="error-container card shadow-sm">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="error-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div>
+                        <div class="error-code">404</div>
+                        <h1 class="h4 mb-1">¡Oops! Página no encontrada</h1>
+                        <p class="text-muted mb-0">Lo sentimos, la página que estás buscando no existe o ha sido movida.</p>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="index.html" class="btn btn-primary me-2"><i class="fas fa-home me-2"></i>Volver al Dashboard</a>
+                    <a href="#" id="retryBtn" class="btn btn-outline-primary me-2"><i class="fas fa-redo me-2"></i>Reintentar</a>
+                    <a href="#" id="backBtn" class="btn btn-outline-secondary"><i class="fas fa-arrow-left me-2"></i>Volver</a>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-12 col-md-6">
+                        <div class="p-3 bg-light rounded">
+                            <h6 class="mb-2"><i class="fas fa-info-circle me-2"></i>Posibles causas</h6>
+                            <ul class="mb-0 text-muted">
+                                <li>URL incorrecta</li>
+                                <li>Página movida o eliminada</li>
+                                <li>Problema temporal del servidor</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 mt-3 mt-md-0">
+                        <div class="p-3 bg-white rounded border">
+                            <h6 class="mb-2"><i class="fas fa-headset me-2"></i>Soporte</h6>
+                            <p class="mb-1 text-muted">Email: <a href="mailto:support@mysite.com">support@mysite.com</a></p>
+                            <p class="mb-0 text-muted">Tel: <a href="tel:+34969636773">+34 969 636 773</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer (matches main pages) -->
+    <footer class="sticky-footer bg-light text-center py-3 shadow-sm">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <span>&copy; 2026 Restaurante Estrella</span>
+            <span id="footerText" class="footer-text">
+                Contacto: <a href="mailto:support@mysite.com">support@mysite.com</a> |
+                Teléfono: +34 969 636 773
+            </span>
+        </div>
+    </footer>
+
+    <script type="module" src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('retryBtn').addEventListener('click', (e) => { e.preventDefault(); window.location.reload(); });
+            document.getElementById('backBtn').addEventListener('click', (e) => { e.preventDefault(); if (history.length>1) history.back(); else location.href='index.html'; });
+
+            // Detect and display specific error codes via query params
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            const type = params.get('error');
+            if (code) document.querySelector('.error-code').textContent = code;
+            if (type === 'access_denied') {
+                document.querySelector('.h4').textContent = 'Acceso Denegado';
+                document.querySelector('.text-muted').textContent = 'No tienes permisos para acceder a esta página.';
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
