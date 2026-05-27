@@ -30,6 +30,7 @@ No se requiere `npm` ni bundler.
 - `translations.js`: define los textos de la UI para `es` y `en`.
 - `utils.js`: funciones de utilidad para tema, formato, colores y leyendas.
 - `style.css`: estilos responsivos, modo oscuro y diseño del dashboard.
+- `presentation/`: presentación en Markdown con capturas de pantalla.
 
 ## Estructura del proyecto
 

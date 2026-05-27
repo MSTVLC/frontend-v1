@@ -32,6 +32,7 @@ No `npm` or bundler is required.
 - `translations.js`: UI text definitions for `es` and `en`.
 - `utils.js`: shared utility functions for theme, formatting, colors, and legends.
 - `style.css`: responsive styles, dark mode, and dashboard layout.
+- `presentation/`: presentation draft in Markdown with screenshot assets.
 
 ## Features
 
